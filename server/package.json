@@ -1,15 +1,18 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed.js",
+    "build": "rimraf dist && babel src --out-dir dist",
+    "start": "npm run build && node dist/index.js",
+    "dev": "concurrently \"babel src -w --out-dir dist\" \"nodemon src/index.js\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "body-parser": "^1.20.2",
@@ -20,5 +23,12 @@
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
     "prisma": "^5.18.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/register": "^7.24.6",
+    "nodemon": "^3.1.4"
   }
 }
