@@ -1,10 +1,9 @@
-const express = require("express");
-const prismaClient = require("@prisma/client");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
-const prisma = new prismaClient();
-
-export const getDashboardMetrics = async (res, req) => {
+const getDashboardMetrics = async (req, res) => {
   try {
+    // Fetch data from the database
     const popularProducts = await prisma.products.findMany({
       take: 15,
       orderBy: {
@@ -18,31 +17,38 @@ export const getDashboardMetrics = async (res, req) => {
         date: "desc",
       },
     });
+
     const purchaseSummary = await prisma.purchaseSummary.findMany({
       take: 5,
       orderBy: {
         date: "desc",
       },
     });
+
     const expenseSummary = await prisma.expenseSummary.findMany({
       take: 5,
       orderBy: {
         date: "desc",
       },
     });
-    const expenseByCategorySummarRaw =
-      await prisma.expenseByCategorySummaryRaw.findMany({
+
+    const expenseByCategorySummaryRaw = await prisma.expenseByCategory.findMany(
+      {
         take: 5,
         orderBy: {
           date: "desc",
         },
-      });
-    const expenseByCategorySummary =
-      await prisma.expenseByCategorySummarRaw.map((item) => ({
+      }
+    );
+
+    const expenseByCategorySummary = expenseByCategorySummaryRaw.map(
+      (item) => ({
         ...item,
         amount: item.amount.toString(),
-      }));
+      })
+    );
 
+    // Send the response
     res.json({
       popularProducts,
       salesSummary,
@@ -51,6 +57,10 @@ export const getDashboardMetrics = async (res, req) => {
       expenseByCategorySummary,
     });
   } catch (error) {
-    res.status(500).json({ error: "Error Receiving dashboard metric" });
+    // Log the error for debugging
+    console.error("Error retrieving dashboard metrics:", error);
+    res.status(500).json({ message: "Error retrieving dashboard metrics" });
   }
 };
+
+module.exports = { getDashboardMetrics };

@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 // Configurations
 dotenv.config();
@@ -17,9 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // routes
-app.get("/hello", (req, res) => {
-  res.send("Hello World");
-});
+app.use("/dashboard", dashboardRoutes);
 // server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
