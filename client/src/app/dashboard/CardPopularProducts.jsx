@@ -33,7 +33,7 @@ const CardPopularProducts = () => {
                         ${product.price}
                       </span>
                       <span className="mx-2">|</span>
-                      <Rating rating={product.rating} />
+                      <Rating rating={product.rating || 0} />
                     </div>
                   </div>
                 </div>
