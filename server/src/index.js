@@ -5,6 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 // Configurations
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(cors());
 
 // routes
 app.use("/dashboard", dashboardRoutes);
+app.use("/products", productRoutes);
 // server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
