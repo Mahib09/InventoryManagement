@@ -1,9 +1,11 @@
 "use client";
 
+import { Package, TrendingDown, TrendingUp } from "lucide-react";
 import CardExpenseSummary from "./CardExpenseSummary";
 import CardPopularProducts from "./CardPopularProducts";
 import CardPurchaseSummary from "./CardPurchaseSummary";
 import CardSalesSummary from "./CardSalesSummary";
+import StatCard from "./StatCard";
 
 const Dashboard = () => {
   return (
@@ -12,7 +14,25 @@ const Dashboard = () => {
       <CardSalesSummary />
       <CardPurchaseSummary />
       <CardExpenseSummary />
-      <div className="md:row-span-1 xl:row-span-2 bg-gray-500"></div>
+      <StatCard
+        title="Customer & Expenses"
+        dateRange="22 - 29 July 2024"
+        details={[
+          {
+            title: "Customer Growth",
+            amount: "175.00",
+            changePercentage: 131,
+            IconComponent: TrendingUp,
+          },
+          {
+            title: "Expenses",
+            amount: "10.00",
+            changePercentage: -56,
+            IconComponent: TrendingDown,
+          },
+        ]}
+        primaryIcon={<Package className="text-blue-600 w-6 h-6" />}
+      />
       <div className="md:row-span-1 xl:row-span-2 bg-gray-500"></div>
       <div className="md:row-span-1 xl:row-span-2 bg-gray-500"></div>
     </div>
