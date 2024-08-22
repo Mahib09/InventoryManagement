@@ -50,7 +50,7 @@ const Inventory = () => {
         columns={columns}
         getRowId={(row) => row.productId}
         checkboxSelection
-        className="bg-white shadow rounded-lg border dorder-gray-200 mt-5 !textgray-700"
+        className="bg-white shadow rounded-lg border border-gray-200 mt-5 textgray-700"
       />
     </div>
   );
