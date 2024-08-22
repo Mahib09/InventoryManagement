@@ -24,6 +24,10 @@ export const api = createApi({
       }),
       invalidatesTags: ["Products"],
     }),
+    getUsers: build.query({
+      query: () => "/users",
+      providesTags: ["Users"],
+    }),
   }),
 });
 
@@ -31,4 +35,5 @@ export const {
   useGetDashboardMetricsQuery,
   useGetProductsQuery,
   useCreateProductMutation,
+  useGetUsersQuery,
 } = api;
