@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
+const expenseRoutes = require("./routes/expenseRoutes");
 
 // Configurations
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(cors());
 app.use("/dashboard", dashboardRoutes);
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
+app.use("/expenses", expenseRoutes);
 // server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
