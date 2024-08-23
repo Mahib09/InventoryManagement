@@ -53,7 +53,7 @@ const deleteProduct = async (req, res) => {
       return res.status(400).json({ message: "Product ID is required" });
     }
     const product = await prisma.products.delete({
-      where: { productId },
+      where: { productId: productId },
     });
     res.status(200).json(product);
   } catch (error) {
