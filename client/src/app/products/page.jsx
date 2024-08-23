@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {
   useCreateProductMutation,
   useGetProductsQuery,
-  useDeleteproductMutation,
+  useDeleteProductMutation,
 } from "../state/api";
 import { PlusCircle, SearchIcon } from "lucide-react";
 import Header from "../(components)/Header";
@@ -25,7 +25,7 @@ const Products = () => {
   const handleCreateProduct = async (productData) => {
     await createProduct(productData);
   };
-  const [deleteProduct] = useDeleteproductMutation();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const handleDeleteProduct = async (productId) => {
     try {
