@@ -46,4 +46,20 @@ const createProduct = async (req, res) => {
   }
 };
 
-module.exports = { getProducts, createProduct };
+const deleteProduct = async (req, res) => {
+  try {
+    const { productId } = req.params; // Access productId from params
+    if (!productId) {
+      return res.status(400).json({ message: "Product ID is required" });
+    }
+    const product = await prisma.products.delete({
+      where: { productId },
+    });
+    res.status(200).json(product);
+  } catch (error) {
+    console.error("Error deleting product:", error.message);
+    res.status(500).json({ message: "Error deleting product" });
+  }
+};
+
+module.exports = { getProducts, createProduct, deleteProduct };

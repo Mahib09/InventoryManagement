@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { useCreateProductMutation, useGetProductsQuery } from "../state/api";
+import {
+  useCreateProductMutation,
+  useGetProductsQuery,
+  useDeleteproductMutation,
+} from "../state/api";
 import { PlusCircle, SearchIcon } from "lucide-react";
 import Header from "../(components)/Header";
 import Rating from "../(components)/Rating";
@@ -20,6 +24,16 @@ const Products = () => {
   const [createProduct] = useCreateProductMutation();
   const handleCreateProduct = async (productData) => {
     await createProduct(productData);
+  };
+  const [deleteProduct] = useDeleteproductMutation();
+
+  const handleDeleteProduct = async (productId) => {
+    try {
+      await deleteProduct(productId).unwrap();
+      alert("Product deleted successfully");
+    } catch (error) {
+      alert("Failed to delete product");
+    }
   };
 
   if (isLoading) {
@@ -87,6 +101,12 @@ const Products = () => {
                     <Rating rating={product.rating} />
                   </div>
                 )}
+                <button
+                  onClick={() => handleDeleteProduct(product.productId)}
+                  className="bg-red-300 p-2 mt-2 rounded-lg hover:bg-red-500"
+                >
+                  Delete Product
+                </button>
               </div>
             </div>
           ))
