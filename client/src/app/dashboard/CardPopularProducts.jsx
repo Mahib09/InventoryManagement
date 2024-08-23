@@ -25,12 +25,12 @@ const CardPopularProducts = () => {
                 <div className="flex items-center gap-3">
                   <Image
                     src={`https://s3-inventorymanagement-mahib.s3.us-east-2.amazonaws.com/product${
-                      Math.floor(Math.random() * 5) + 1
+                      Math.floor(Math.random() * 8) + 1
                     }.png`}
                     alt={product.name}
                     width={48}
                     height={48}
-                    className="rounded-lg w-14 h-14 "
+                    className="rounded-lg w-14 h-14 object-cover "
                   />
                   <div className="flex flex-col justify-between gap-1">
                     <div className="font-bold text-gray-700">
