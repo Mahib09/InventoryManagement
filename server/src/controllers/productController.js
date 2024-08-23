@@ -48,7 +48,7 @@ const createProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   try {
-    const { productId } = req.params; // Access productId from params
+    const { productId } = req.body;
     if (!productId) {
       return res.status(400).json({ message: "Product ID is required" });
     }

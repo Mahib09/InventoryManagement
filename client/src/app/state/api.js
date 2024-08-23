@@ -24,7 +24,7 @@ export const api = createApi({
       }),
       invalidatesTags: ["Products"],
     }),
-    deleteproduct: build.mutation({
+    deleteProduct: build.mutation({
       query: (productId) => ({
         url: `/products/${productId}`, // Include productId in the URL
         method: "DELETE",
@@ -47,7 +47,7 @@ export const {
   useGetDashboardMetricsQuery,
   useGetProductsQuery,
   useCreateProductMutation,
-  useDeleteproductMutation,
+  useDeleteProductMutation,
   useGetUsersQuery,
   useGetExpensesByCategoryQuery,
 } = api;

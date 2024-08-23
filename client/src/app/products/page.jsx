@@ -32,7 +32,7 @@ const Products = () => {
       await deleteProduct(productId).unwrap();
       alert("Product deleted successfully");
     } catch (error) {
-      alert("Failed to delete product");
+      alert("Failed to delete product", error);
     }
   };
 
