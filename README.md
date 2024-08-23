@@ -38,19 +38,10 @@ Explore the live version of Invetox here: [Invetox](https://lnkd.in/g3bwaz67)
 - Management of expenses, sales, and user data
 - Easy-to-use product-adding feature
 
-## Installation
+## Contact
 
-To get started with Invetox, follow these steps:
+For any questions or feedback, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/ranamagarmahib) or [Email](mailto:mahibrm.work@gmail.com).
 
-### Prerequisites
+---
 
-- Node.js (v14 or higher)
-- PostgreSQL
-- AWS account (for cloud infrastructure)
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/invetox.git
-cd invetox
-```
+Happy coding! 🚀
